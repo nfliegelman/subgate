@@ -99,7 +99,7 @@ def test_children_to_results_shape():
 # ---------------------------------------------------------------------------
 
 def test_rule_line_format():
-    assert subgate.rule_line("Some_Sub") == "||reddit.com/r/Some_Sub^"
+    assert subgate.rule_line("Some_Sub") == "||reddit.com/r/Some_Sub^$all"
 
 
 def make_state_with(entries):
@@ -137,7 +137,7 @@ def test_write_list_header_and_cap(tmp_path):
     lines = path.read_text().splitlines()
     assert lines[0] == "! Title: subgate (chrome)"
     assert "! Entry count: 2" in lines
-    assert lines[-2:] == ["||reddit.com/r/A^", "||reddit.com/r/B^"]
+    assert lines[-2:] == ["||reddit.com/r/A^$all", "||reddit.com/r/B^$all"]
 
 
 def test_state_roundtrip(tmp_path):
@@ -240,10 +240,10 @@ def test_full_pipeline_mocked(tmp_path, monkeypatch):
         full = (tmp_path / subgate.FULL_LIST).read_text().splitlines()
         rules = [ln for ln in full if not ln.startswith("!")]
         assert rules == [
-            "||reddit.com/r/gonewild^",
-            "||reddit.com/r/NSFW^",
-            "||reddit.com/r/FreshSpice^",
-            "||reddit.com/r/Borderline_Test^",
+            "||reddit.com/r/gonewild^$all",
+            "||reddit.com/r/NSFW^$all",
+            "||reddit.com/r/FreshSpice^$all",
+            "||reddit.com/r/Borderline_Test^$all",
         ]
         assert "! Entry count: 4" in full
         chrome = (tmp_path / subgate.CHROME_LIST).read_text().splitlines()
@@ -439,6 +439,13 @@ def test_userscript_is_present_and_well_formed():
     assert f"@version      {subgate.VERSION}" in src, "userscript version must track VERSION"
     assert src.count("(") == src.count(")")
     assert src.count("{") == src.count("}")
+    # v0.3.0 architecture: data layers first, markup demoted to tiebreaker.
+    for needed in ("@grant        GM_xmlhttpRequest",
+                   "@connect      raw.githubusercontent.com",
+                   "@connect      api.postpone.app",
+                   "your subgate list",
+                   "isNsfwSubreddit"):
+        assert needed in src, f"userscript missing: {needed}"
 
 
 def test_setup_scripts_never_handle_tokens():

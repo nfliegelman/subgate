@@ -32,8 +32,10 @@ Chrome: AdGuard extension settings, Filters, Custom filters, Add custom filter, 
 This is the piece that catches brand new subreddits, so do not skip it.
 
 1. Install a userscript manager: Violentmonkey (Firefox) or Tampermonkey (Chrome). On Chrome, also turn on Developer mode at `chrome://extensions`, which Tampermonkey needs to run userscripts.
+   Firefox only: extensions are disabled in private windows by default, which silently removes every browser-layer defense exactly there. Fix it once per extension: menu, Add-ons and themes, click the extension, set Run in Private Windows to Allow. Do this for uBlock Origin and Violentmonkey both.
 2. Open `https://raw.githubusercontent.com/OWNER/subgate/main/subgate.user.js` in that browser; the manager will offer to install it.
-3. The top of the script has an `ALLOW` list (support communities like r/pornfree are pre-listed) and a `VERBOSE` switch. Leave `VERBOSE` on for the first week: every allow or block decision is logged to the browser console with its reason, so if anything misfires you can send the log line back and the rule gets fixed.
+3. Updating: when a new subgate version ships, open the raw URL again and reinstall; v0.3.0 and later also need you to accept the cross-origin permissions it asks for, which is how it downloads your list and asks the mirror.
+4. The top of the script has an `ALLOW` list (support communities like r/pornfree are pre-listed) and a `VERBOSE` switch. Leave `VERBOSE` on for the first week: every allow or block decision is logged to the browser console with its reason, so if anything misfires you can send the log line back and the rule gets fixed.
 
 iPhone note: Chrome on iOS has no extension platform, so neither the lists nor the userscript can run there. On the phone, the working layers are your Reddit account's 18+ setting (server side, covers every browser and the app) and NextDNS (make sure `old.reddit.com` is on the denylist). A Safari-based phone layer is pre-planned as Phase 3 in FUTURE.md if you ever want it.
 
@@ -50,4 +52,4 @@ iPhone note: Chrome on iOS has no extension platform, so neither the lists nor t
 No secrets are required. The optional Reddit credentials above only exist for the day Reddit approves API access, if ever. Never commit keys. Configuration lives in `sources.yaml`; its limits are guards, see HANDOFF.md before changing them.
 
 ## Version
-Semver via git tags. Current: v0.2.1. The changelog lives in HANDOFF.md.
+Semver via git tags. Current: v0.3.0. The changelog lives in HANDOFF.md.

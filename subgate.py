@@ -26,7 +26,7 @@ import time
 import requests
 import yaml
 
-VERSION = "0.2.1"
+VERSION = "0.3.0"
 
 STATE_FILE = "subgate_state.json"
 FULL_LIST = "subgate_full.txt"
@@ -603,7 +603,13 @@ def rule_line(name):
     # separator stops r/name from also matching r/nameplus. Adblock matching
     # is case insensitive by default, which fits Reddit's case insensitive
     # subreddit routing.
-    return f"{RULE_PREFIX}{name}^"
+    #
+    # $all is load bearing. Without it, uBlock treats a path filter as
+    # subresource-only: the app's background fetches get blocked (clicks die
+    # silently) but typing the URL or opening a post link loads the page.
+    # Observed live 2026-07-19. $all includes the document type, so direct
+    # navigation gets uBlock's block page too. AdGuard supports $all as well.
+    return f"{RULE_PREFIX}{name}^$all"
 
 
 def build_entries(state, force_names):
