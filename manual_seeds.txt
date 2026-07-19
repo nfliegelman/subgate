@@ -1,0 +1,8 @@
+# manual_seeds.txt: paste anything here and subgate will extract subreddit
+# names from it: full URLs, r/Name mentions inside sentences, or bare names
+# one per line. Lines starting with # are ignored. Every extracted name is
+# verified against Reddit's own over_18 flag before it can ship, so junk in
+# a paste costs nothing but a few API calls.
+#
+# Example uses: copy-paste the rendered Postpone list page, or any other
+# "list of NSFW subreddits" you come across, straight into this file.

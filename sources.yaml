@@ -1,0 +1,50 @@
+# subgate configuration. Plain English notes inline; the full spec lives in
+# HANDOFF.md. Rate limits and caps are guards: do not raise them casually.
+
+qpm_authenticated: 90        # Reddit's free OAuth tier allows 100/min; stay under it
+qpm_unauthenticated: 6       # local smoke tests without secrets only
+max_calls_per_run: 4000      # hard budget per run; the run emits lists even if hit
+misses_before_gone: 3        # consecutive failed resolutions before an entry is marked gone
+chrome_max_rules: 20000      # conservative fit for Chrome MV3 dynamic rule limits
+scrape_weekday: 6            # weekly directory re-scrape day, 0 = Monday ... 6 = Sunday
+scrape_hour: 9               # UTC hour of the one run that scrapes; other runs skip it
+reddit_new_pages: 10         # pages of /subreddits/new per daily run (100 per page)
+
+bootstrap:
+  pages_per_token: 3
+  # Short search stems for the one time harvest. Broad is fine: verification
+  # against Reddit's flag filters out anything safe for work at zero risk.
+  extra_tokens: [nsfw, porn, sex, xxx, nude, gone, amateur, hot, milf, fetish, hentai, onlyfans, bdsm, lewd, thot]
+
+sources:
+  - name: manual
+    type: manual
+    path: manual_seeds.txt
+    enabled: true
+    # Paste anything into manual_seeds.txt: raw text, URLs, r/Name mentions,
+    # bare names one per line. The extractor and the verifier do the rest.
+
+  - name: nsfwdog
+    type: nsfwdog_api
+    url: https://api2.nsfwdog.com/v1/subreddits/
+    max_pages: 2000
+    enabled: true
+    # Verified working 2026-07-18: standard paginated JSON (count, next,
+    # results), about 89k entries, 52 per page. Their robots policy allows
+    # general access; subgate crawls it weekly, sequentially, one request per
+    # second. Slugs are lossy, so the scraper generates spelling variants and
+    # lets Reddit verification keep the real ones.
+
+  - name: postpone
+    type: postpone_graphql
+    url: https://api.postpone.app/public/graphql
+    limit: 35000
+    timeout: 180
+    enabled: true
+    # Verified working 2026-07-18. Their public GraphQL endpoint exposes an
+    # nsfwSubreddits(limit) query returning clean subreddit names ordered by
+    # subscriber count descending. One request gets the whole catalog, so
+    # this is far lighter on their servers than page scraping.
+    # Limit guard: 35000 succeeds in about 12s, 40000 returns 502. The tail
+    # is already at 1 subscriber by row 25000, so raising the limit buys
+    # nothing; do not raise it to chase a bigger number.

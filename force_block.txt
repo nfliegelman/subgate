@@ -1,0 +1,6 @@
+# force_block.txt: the single owner override. Names listed here ship in both
+# filter lists even if Reddit's flag says the subreddit is not 18+. Use it
+# for borderline communities whose moderators have not self-labeled.
+# One name per line, with or without the r/ prefix. Lines starting with #
+# are ignored. Keep this file short; if it grows, something is wrong with
+# the pipeline and HANDOFF.md should be revisited instead.
