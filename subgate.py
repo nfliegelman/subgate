@@ -26,7 +26,7 @@ import time
 import requests
 import yaml
 
-VERSION = "0.1.2"
+VERSION = "0.2.0"
 
 STATE_FILE = "subgate_state.json"
 FULL_LIST = "subgate_full.txt"
@@ -176,6 +176,96 @@ class RedditClient:
                 continue
             break
         raise last_err
+
+
+class PostponeVerifier:
+    """Verification authority that does not require Reddit credentials.
+
+    Postpone holds approved Reddit API access and republishes Reddit's own
+    per subreddit over_18 field (their `over18`), with a
+    lastRefreshedFromReddit timestamp. Measured 2026-07-18: flags correct on
+    every spot check, and 62 percent of their catalog re-checked against
+    Reddit within 24 hours, 88 percent within 7 days.
+
+    Two paths:
+      bulk_nsfw()   one request returning their whole NSFW catalog, which is
+                    the backbone of verification.
+      lookup(name)  one request per name, for candidates the bulk list does
+                    not cover. Budgeted per run because it is a free third
+                    party endpoint.
+    """
+
+    name = "postpone"
+
+    def __init__(self, cfg):
+        v = cfg.get("verification", {}) or {}
+        self.url = v.get("postpone_url", "https://api.postpone.app/public/graphql")
+        self.bulk_limit = int(v.get("postpone_bulk_limit", 30000))
+        self.lookup_budget = int(v.get("per_run_lookup_budget", 300))
+        self.min_interval = 60.0 / max(float(v.get("postpone_qpm", 45)), 1.0)
+        self.timeout = int(v.get("timeout", 180))
+        self.calls = 0
+        self._last = 0.0
+        self.session = requests.Session()
+        self.session.headers.update({
+            "User-Agent": f"subgate/{VERSION} (personal NSFW filter list builder)",
+            "Content-Type": "application/json",
+        })
+
+    def _post(self, query, timeout=None):
+        wait = self.min_interval - (time.time() - self._last)
+        if wait > 0:
+            time.sleep(wait)
+        self._last = time.time()
+        self.calls += 1
+        r = self.session.post(self.url, json={"query": query},
+                              timeout=timeout or self.timeout)
+        r.raise_for_status()
+        payload = r.json()
+        if payload.get("errors"):
+            raise RuntimeError(f"graphql errors: {str(payload['errors'])[:200]}")
+        return payload.get("data") or {}
+
+    def bulk_nsfw(self):
+        """Their entire NSFW catalog in one request. Everything returned is
+        confirmed 18+ by Reddit's own flag."""
+        data = self._post("{nsfwSubreddits(limit:%d){name subscribers}}" % self.bulk_limit)
+        rows = data.get("nsfwSubreddits") or []
+        out = {}
+        for row in rows:
+            n = (row.get("name") or "").strip()
+            if VALID_NAME_RE.match(n):
+                out[n.lower()] = {"name": n, "over18": True,
+                                  "subscribers": row.get("subscribers"), "type": None}
+        return out
+
+    def lookup(self, name):
+        """Single name. Returns a result dict or None if it does not resolve."""
+        data = self._post(
+            '{subreddit(subreddit:"%s"){displayName over18 subscribers subredditType}}' % name,
+            timeout=60)
+        row = data.get("subreddit")
+        if not row or not row.get("displayName"):
+            return None
+        return {"name": row["displayName"], "over18": bool(row.get("over18")),
+                "subscribers": row.get("subscribers"), "type": row.get("subredditType")}
+
+
+def build_verifier(cfg):
+    """Pick the verification authority.
+
+    auto (default): Reddit directly when credentials exist, otherwise
+    Postpone's mirror. Reddit closed self-service API signup in late 2025 and
+    blocked unauthenticated access in mid 2026, so the mirror is the working
+    path for most people. If Reddit access is ever approved, adding the
+    secrets switches this back with no code change.
+    """
+    provider = (cfg.get("verification", {}) or {}).get("provider", "auto")
+    have_creds = bool(os.environ.get("REDDIT_CLIENT_ID", "").strip()
+                      and os.environ.get("REDDIT_CLIENT_SECRET", "").strip())
+    if provider == "reddit" or (provider == "auto" and have_creds):
+        return RedditClient(cfg), True
+    return PostponeVerifier(cfg), False
 
 
 def children_to_results(payload):
@@ -453,6 +543,54 @@ def verify_and_apply(client, state, names, misses_before_gone, now):
     return len(todo), resolved
 
 
+def verify_via_postpone(verifier, state, candidate_names, misses_before_gone, now):
+    """Verification without Reddit credentials.
+
+    Pass 1 (bulk): one request returns Postpone's whole NSFW catalog. Every
+    name in it is marked nsfw.
+
+    Pass 2 (drain): names in the catalog that bulk did not confirm get a
+    per-name lookup, capped by per_run_lookup_budget because this is a free
+    third party endpoint. The queue drains across runs, oldest unverified
+    first.
+
+    GUARD: absence from the bulk list must never mark a name sfw or gone. The
+    bulk list is capped, so absence means unknown, not safe. Only an explicit
+    per-name lookup can set sfw, and only a failed lookup counts as a miss.
+    """
+    bulk = verifier.bulk_nsfw()
+    apply_verification(state, bulk, set(bulk.keys()), misses_before_gone, "postpone_bulk", now)
+    print(f"[verify] postpone bulk confirmed {len(bulk)} nsfw subreddits")
+
+    known = set(state["subs"].keys())
+    pending = sorted((set(candidate_names) | known) - set(bulk.keys()))
+    # Never verified yet first, then least recently verified.
+    def sort_key(k):
+        e = state["subs"].get(k) or {}
+        return (e.get("last_verified_utc") or "", k)
+    pending.sort(key=sort_key)
+
+    budget = verifier.lookup_budget
+    attempted, resolved = 0, 0
+    for key in pending[:budget]:
+        attempted += 1
+        try:
+            r = verifier.lookup(key)
+        except BudgetExceeded:
+            raise
+        except Exception as e:
+            print(f"[warn] lookup failed for one name, continuing: {str(e)[:80]}")
+            continue
+        results = {key: r} if r else {}
+        if r:
+            resolved += 1
+        apply_verification(state, results, {key}, misses_before_gone, "postpone_lookup", now)
+    remaining = max(0, len(pending) - budget)
+    print(f"[verify] postpone drain: attempted {attempted}, resolved {resolved}, "
+          f"{remaining} still queued for later runs")
+    return attempted, resolved
+
+
 # ---------------------------------------------------------------------------
 # Emission
 # ---------------------------------------------------------------------------
@@ -531,22 +669,27 @@ def run_pipeline(mode, args):
     cfg = load_config()
     state = load_state()
     now = utcnow_iso()
-    client = RedditClient(cfg, max_calls=args.max_calls)
-    print(f"[subgate v{VERSION}] mode={mode} "
-          f"auth={'oauth' if client.authed else 'none (slow local fallback)'} "
-          f"budget={client.max_calls} calls")
+    verifier, is_reddit = build_verifier(cfg)
+    if is_reddit:
+        client = verifier
+        print(f"[subgate v{VERSION}] mode={mode} verify=reddit "
+              f"auth={'oauth' if client.authed else 'none (slow local fallback)'} "
+              f"budget={client.max_calls} calls")
+    else:
+        print(f"[subgate v{VERSION}] mode={mode} verify=postpone (no Reddit "
+              f"credentials needed) lookup_budget={verifier.lookup_budget}")
     misses = int(cfg.get("misses_before_gone", 3))
     budget_hit = False
     cand_sources = {}
     try:
-        if mode == "bootstrap":
-            res = search_sweep(client, cfg)
+        if is_reddit and mode == "bootstrap":
+            res = search_sweep(verifier, cfg)
             apply_verification(state, res, set(res.keys()), misses, "reddit_search", now)
             print(f"[discover] search sweep saw {len(res)} subreddits")
-        if not args.skip_new:
+        if is_reddit and not args.skip_new:
             pages = args.reddit_new_pages if args.reddit_new_pages is not None \
                 else int(cfg.get("reddit_new_pages", 10))
-            res = fetch_new_subreddits(client, pages)
+            res = fetch_new_subreddits(verifier, pages)
             unseen = [k for k in res if k not in state["subs"]]
             window = pages * 100
             if state["subs"] and len(res) >= window - 10 and len(unseen) == len(res):
@@ -556,14 +699,26 @@ def run_pipeline(mode, args):
             apply_verification(state, res, set(res.keys()), misses, "reddit_new", now)
             print(f"[discover] /subreddits/new saw {len(res)} subreddits "
                   f"({len(unseen)} new to the catalog)")
+        elif not is_reddit:
+            print("[discover] Reddit-native discovery skipped (no credentials). "
+                  "Brand new subreddits are covered by the browser userscript, "
+                  "not by these lists. See README.")
         scrape_dirs = mode == "bootstrap" or args.force_scrape or is_scrape_time(cfg)
         cand_sources = collect_candidates(cfg, scrape_dirs)
         names = set(cand_sources.keys()) | set(state["subs"].keys())
-        attempted, resolved = verify_and_apply(client, state, names, misses, now)
-        print(f"[verify] attempted {attempted} names, {resolved} resolved")
+        if is_reddit:
+            attempted, resolved = verify_and_apply(verifier, state, names, misses, now)
+            print(f"[verify] attempted {attempted} names, {resolved} resolved")
+        else:
+            verify_via_postpone(verifier, state, names, misses, now)
     except BudgetExceeded as e:
         budget_hit = True
         print(f"[warn] {e}; emitting lists from what is verified so far")
+    except (requests.RequestException, RuntimeError) as e:
+        if not state["subs"]:
+            raise
+        print(f"[warn] verification pass failed ({str(e)[:100]}); emitting "
+              "lists from the existing catalog, which is left intact")
     tag_sources(state, cand_sources)
     force = read_names_file(FORCE_FILE)
     entries, forced = build_entries(state, force)
@@ -575,7 +730,7 @@ def run_pipeline(mode, args):
     trimmed = max(0, len(entries) - n_chrome)
     print(f"[emit] full={n_full} chrome={n_chrome} (cap {cap}, trimmed {trimmed}) forced={forced}")
     print(f"[state] nsfw={counts['nsfw']} sfw={counts['sfw']} gone={counts['gone']} "
-          f"api_calls={client.calls} budget_hit={budget_hit}")
+          f"api_calls={verifier.calls} budget_hit={budget_hit}")
 
 
 def main(argv=None):

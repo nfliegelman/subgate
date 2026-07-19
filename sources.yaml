@@ -1,6 +1,18 @@
 # subgate configuration. Plain English notes inline; the full spec lives in
 # HANDOFF.md. Rate limits and caps are guards: do not raise them casually.
 
+# Verification authority. Reddit closed self-service API signup (late 2025)
+# and blocked unauthenticated access (mid 2026), so the default path needs no
+# Reddit credentials at all. If Reddit access is ever approved, just add the
+# secrets and provider: auto switches back automatically.
+verification:
+  provider: auto             # auto | postpone | reddit
+  postpone_url: https://api.postpone.app/public/graphql
+  postpone_bulk_limit: 30000 # one request returns the whole NSFW catalog
+  postpone_qpm: 45           # politeness limit on a free third party endpoint
+  per_run_lookup_budget: 300 # per-name lookups per run; the queue drains over time
+  timeout: 180
+
 qpm_authenticated: 90        # Reddit's free OAuth tier allows 100/min; stay under it
 qpm_unauthenticated: 6       # local smoke tests without secrets only
 max_calls_per_run: 4000      # hard budget per run; the run emits lists even if hit

@@ -214,6 +214,7 @@ def _fake_get_json(self, path, params=None):
 def test_full_pipeline_mocked(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     (tmp_path / "sources.yaml").write_text(
+        "verification: {provider: reddit}\n"
         "qpm_authenticated: 6000\nqpm_unauthenticated: 6000\n"
         "max_calls_per_run: 50\nmisses_before_gone: 3\nchrome_max_rules: 3\n"
         "scrape_weekday: 6\nreddit_new_pages: 1\nbootstrap: {}\n"
@@ -225,6 +226,9 @@ def test_full_pipeline_mocked(tmp_path, monkeypatch):
     )
     (tmp_path / "force_block.txt").write_text("Borderline_Test\n")
     monkeypatch.setattr(subgate.RedditClient, "get_json", _fake_get_json)
+    monkeypatch.setattr(subgate.RedditClient, "_authenticate", lambda self: None)
+    monkeypatch.setenv("REDDIT_CLIENT_ID", "test")
+    monkeypatch.setenv("REDDIT_CLIENT_SECRET", "test")
 
     for _ in range(2):  # second pass proves re-verification is idempotent
         subgate.main(["run"])
@@ -328,6 +332,113 @@ def test_is_scrape_time_gates_on_day_and_hour():
     assert subgate.is_scrape_time(cfg, sunday_9) is True
     assert subgate.is_scrape_time(cfg, sunday_15) is False
     assert subgate.is_scrape_time(cfg, saturday_9) is False
+
+
+# ---------------------------------------------------------------------------
+# Postpone verification path (no Reddit credentials)
+# ---------------------------------------------------------------------------
+
+class FakePostpone:
+    """Stands in for PostponeVerifier without touching the network."""
+
+    name = "postpone"
+
+    def __init__(self, bulk, lookups, budget=300):
+        self._bulk = bulk
+        self._lookups = lookups
+        self.lookup_budget = budget
+        self.calls = 0
+        self.looked_up = []
+
+    def bulk_nsfw(self):
+        self.calls += 1
+        return dict(self._bulk)
+
+    def lookup(self, name):
+        self.calls += 1
+        self.looked_up.append(name)
+        return self._lookups.get(name)
+
+
+def test_postpone_bulk_marks_nsfw_and_absence_never_marks_sfw():
+    """Core guard: the bulk list is capped, so absence means unknown, not safe."""
+    state = fresh_state()
+    now = "2026-07-18T00:00:00Z"
+    bulk = {"gonewild": {"name": "gonewild", "over18": True,
+                         "subscribers": 100, "type": None}}
+    v = FakePostpone(bulk, lookups={}, budget=0)   # budget 0 disables the drain
+    state["subs"]["someothersub"] = {
+        "name": "SomeOtherSub", "over18": True, "subscribers": 5, "status": "nsfw",
+        "sources": [], "misses": 0, "first_seen_utc": now, "last_verified_utc": now,
+    }
+    subgate.verify_via_postpone(v, state, {"someothersub"}, 3, now)
+    assert state["subs"]["gonewild"]["status"] == "nsfw"
+    # Present in the catalog, absent from bulk, not looked up: must be untouched.
+    assert state["subs"]["someothersub"]["status"] == "nsfw"
+    assert state["subs"]["someothersub"]["misses"] == 0
+
+
+def test_postpone_drain_respects_budget_and_sets_status():
+    state = fresh_state()
+    now = "2026-07-18T00:00:00Z"
+    lookups = {
+        "safeone": {"name": "SafeOne", "over18": False, "subscribers": 9, "type": "public"},
+        "spicyone": {"name": "SpicyOne", "over18": True, "subscribers": 7, "type": "public"},
+        "ghostone": None,
+    }
+    v = FakePostpone(bulk={}, lookups=lookups, budget=2)
+    subgate.verify_via_postpone(v, state, set(lookups.keys()), 3, now)
+    assert len(v.looked_up) == 2                      # budget honored
+    for key in v.looked_up:
+        if lookups[key] is None:
+            assert key not in state["subs"]           # unknown name stays unknown
+        else:
+            expected = "nsfw" if lookups[key]["over18"] else "sfw"
+            assert state["subs"][key]["status"] == expected
+
+
+def test_postpone_lookup_failure_does_not_abort_drain(capsys):
+    state = fresh_state()
+    now = "2026-07-18T00:00:00Z"
+
+    class Flaky(FakePostpone):
+        def lookup(self, name):
+            self.calls += 1
+            self.looked_up.append(name)
+            if name == "boom":
+                raise RuntimeError("transient")
+            return {"name": name, "over18": True, "subscribers": 1, "type": "public"}
+
+    v = Flaky(bulk={}, lookups={}, budget=5)
+    subgate.verify_via_postpone(v, state, {"boom", "aaa", "bbb"}, 3, now)
+    assert len(v.looked_up) == 3                      # kept going past the failure
+    assert state["subs"]["aaa"]["status"] == "nsfw"
+    assert "boom" not in state["subs"]
+
+
+def test_build_verifier_picks_postpone_without_credentials(monkeypatch):
+    monkeypatch.delenv("REDDIT_CLIENT_ID", raising=False)
+    monkeypatch.delenv("REDDIT_CLIENT_SECRET", raising=False)
+    v, is_reddit = subgate.build_verifier({"verification": {"provider": "auto"}})
+    assert is_reddit is False
+    assert v.name == "postpone"
+
+
+def test_build_verifier_prefers_reddit_when_credentials_exist(monkeypatch):
+    monkeypatch.setenv("REDDIT_CLIENT_ID", "x")
+    monkeypatch.setenv("REDDIT_CLIENT_SECRET", "y")
+    monkeypatch.setattr(subgate.RedditClient, "_authenticate", lambda self: None)
+    v, is_reddit = subgate.build_verifier({"verification": {"provider": "auto"}})
+    assert is_reddit is True
+
+
+def test_userscript_is_present_and_well_formed():
+    path = os.path.join(REPO_ROOT, "subgate.user.js")
+    src = open(path, encoding="utf-8").read()
+    assert "// ==UserScript==" in src and "// ==/UserScript==" in src
+    assert f"@version      {subgate.VERSION}" in src, "userscript version must track VERSION"
+    assert src.count("(") == src.count(")")
+    assert src.count("{") == src.count("}")
 
 
 def test_no_em_dashes_anywhere():
