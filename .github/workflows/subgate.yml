@@ -2,7 +2,7 @@ name: subgate
 
 on:
   schedule:
-    - cron: "13 3,9,15,21 * * *"
+    - cron: "13 3,9,15,21 * * *"   # every 6 hours; new-sub window rolls at ~1000 entries
   workflow_dispatch:
     inputs:
       mode:
@@ -40,8 +40,15 @@ jobs:
       - name: Install dependencies
         run: pip install requests pyyaml
 
+      - name: Personalize userscript for this repo
+        run: |
+          sed -i "s#OWNER/subgate#${GITHUB_REPOSITORY}#g" subgate.user.js extension/background.js extension/options.js extension/options.html
+
       - name: Run subgate
         env:
+          # Optional. Leave unset: subgate verifies through Postpone's mirror
+          # and needs no Reddit account. If Reddit ever approves API access,
+          # add these secrets and it switches back automatically.
           REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
           REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
           REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
@@ -57,7 +64,7 @@ jobs:
         run: |
           git config user.name "subgate-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add subgate_state.json subgate_full.txt subgate_chrome.txt
+          git add subgate_state.json subgate_full.txt subgate_chrome.txt subgate.user.js extension/
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
