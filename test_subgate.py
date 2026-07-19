@@ -441,6 +441,21 @@ def test_userscript_is_present_and_well_formed():
     assert src.count("{") == src.count("}")
 
 
+def test_setup_scripts_never_handle_tokens():
+    """Guard: setup must route auth through the owner's browser, never a token."""
+    for fn in ("setup.sh", "setup.ps1"):
+        src = open(os.path.join(REPO_ROOT, fn), encoding="utf-8").read()
+        assert "gh auth login" in src, f"{fn} must use the browser login flow"
+        lowered = src.lower()
+        for banned in ("github_pat_", "ghp_", "read-host", "with_token", "gh auth login --with-token"):
+            assert banned not in lowered, f"{fn} must not touch tokens ({banned})"
+
+
+def test_userscript_version_tracks_module_version():
+    src = open(os.path.join(REPO_ROOT, "subgate.user.js"), encoding="utf-8").read()
+    assert f"@version      {subgate.VERSION}" in src
+
+
 def test_no_em_dashes_anywhere():
     """Project rule: no em dashes in any file, ever. This automates the sweep."""
     skip_dirs = {".git", "__pycache__", ".pytest_cache"}

@@ -4,7 +4,7 @@ You are an AI assistant helping Noah modify this program. Noah is a data enthusi
 
 The prime directives, coding conventions, validation gates, and handback protocol live in the project instructions, not in this file. Read those first. If you are reading this repo without them (for example straight from GitHub), the two rules most expensive to miss are: never delete or hand back the state and data files listed in the manifest below, and never use em dashes anywhere. Then go find the full project instructions before editing.
 
-**Versioning:** semver (MAJOR.MINOR.PATCH) via git tags. PATCH for fixes and guard-preserving tweaks, MINOR for new features or roadmap phases, MAJOR for breaking changes to the data schema, list format, or state format. Bump `VERSION` in `subgate.py`, the tag, and add a changelog entry in the same commit as the code change. Current: v0.2.0.
+**Versioning:** semver (MAJOR.MINOR.PATCH) via git tags. PATCH for fixes and guard-preserving tweaks, MINOR for new features or roadmap phases, MAJOR for breaking changes to the data schema, list format, or state format. Bump `VERSION` in `subgate.py`, the tag, and add a changelog entry in the same commit as the code change. Current: v0.2.1.
 
 ---
 
@@ -57,7 +57,8 @@ List files: adblock syntax, header comments (`! Title`, `! Version`, `! Expires:
 ## 5. Handback manifest
 Ships in every handback (full files, zipped, never diffs):
 - `subgate.py`, `subgate.user.js`, `test_subgate.py`, `sources.yaml`, `manual_seeds.txt`, `force_block.txt`
-- `HANDOFF.md`, `FUTURE.md`, `README.md`, `gitignore.txt`
+- `setup.ps1`, `setup.sh`, `SETUP.md`
+- `HANDOFF.md`, `FUTURE.md`, `README.md`, `SETUP.md`, `gitignore.txt`
 - `.github/workflows/subgate.yml`
 - `AUDIT_TODO.md` only during an audit
 
@@ -67,6 +68,10 @@ Never ships (the live track record; the workflow commits it back, git history is
 
 ## 6. Changelog
 Newest first. One entry per code change, in the same commit.
+
+### v0.2.1 (2026-07-19)
+- Added `setup.ps1`, `setup.sh`, and `SETUP.md`: one-command repo creation, push, workflow write-permission enablement, and bootstrap dispatch, plus a no-install browser path and a troubleshooting section. Setup friction was the actual blocker to first use, not the code.
+- Scripts authenticate through `gh auth login` in the owner's browser. They never accept, prompt for, store, or transmit a token, and SETUP.md says so explicitly.
 
 ### v0.2.0 (2026-07-18)
 - Verification no longer requires Reddit credentials. New `PostponeVerifier` plus `build_verifier()` selection; Reddit stays the preferred authority whenever credentials exist. Forced by Reddit closing self-service API signup and blocking unauthenticated traffic.
@@ -98,4 +103,5 @@ Longer-lived "why we chose X over Y" notes that outlast a single changelog line.
 - Name "subgate" over descriptive names: the repo must be public for raw URL subscriptions, so the name stays discreet on Noah's profile while README states plainly what it does.
 - Unauthenticated fallback kept despite being slow: it makes local smoke tests possible with zero setup, and it is the honest path for a fresh clone before secrets exist.
 - Postpone's mirror chosen over a paid Reddit proxy or a self-hosted runner: it is free, already a project dependency, republishes Reddit's own field rather than a curated guess, and carries a refresh timestamp so staleness is observable. The tradeoff accepted is a third-party dependency for the authority itself, mitigated by the bulk-absence guard and by Reddit re-enabling automatically if approval ever lands.
+- Setup scripts use the GitHub CLI browser login rather than accepting a personal access token: a token pasted into a script or a chat is exposed and over-scoped, while `gh auth login` keeps the credential in the owner's own keychain. If a future session is offered a token, the correct response is to decline it and point at these scripts.
 - Userscript chosen over polling for new subreddits: it runs in the browser on a residential IP inside a logged-in session, which is traffic Reddit still permits, and it needs no approval. It also covers a subreddit created minutes ago, which no list-based approach can.

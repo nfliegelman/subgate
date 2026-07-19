@@ -10,6 +10,9 @@ No Reddit account or API key is needed. Reddit closed self-service API signup, s
 The lists cover the back catalog. Brand new communities are covered by the included browser userscript (`subgate.user.js`), which reads Reddit's own 18+ signals the moment a page loads and blocks it, so a subreddit created five minutes ago is caught without any list knowing about it.
 
 ## Setup
+Fastest path: run `setup.ps1` (Windows) or `setup.sh` (Git Bash, macOS, Linux) from the extracted folder. It creates the repo, uploads everything, sets the workflow permission, and starts the first run. See SETUP.md for that plus a no-install browser path and troubleshooting. Never paste a GitHub token into a script or a chat; the setup scripts sign you in through your own browser.
+
+Manual steps, if you prefer to do it yourself:
 1. Prerequisites: a GitHub account, Firefox with uBlock Origin, Chrome with the AdGuard extension (MV3), and a userscript manager (Violentmonkey or Tampermonkey) in each browser. Python 3.12 only if you want to run it locally; the automation runs on GitHub's machines.
 2. Create a **public** repo named `subgate` (public is required so the list URLs work without login) and upload the contents of this folder. Rename `gitignore.txt` to `.gitignore`.
 3. First run: Actions tab, subgate workflow, "Run workflow", set mode to **bootstrap**, run it once. The core catalog (about 30k confirmed communities) lands in the first minutes via one bulk request; the NSFWDog crawl adds roughly half an hour. It commits `subgate_state.json`, `subgate_full.txt`, and `subgate_chrome.txt`.
@@ -47,4 +50,4 @@ iPhone note: Chrome on iOS has no extension platform, so neither the lists nor t
 No secrets are required. The optional Reddit credentials above only exist for the day Reddit approves API access, if ever. Never commit keys. Configuration lives in `sources.yaml`; its limits are guards, see HANDOFF.md before changing them.
 
 ## Version
-Semver via git tags. Current: v0.2.0. The changelog lives in HANDOFF.md.
+Semver via git tags. Current: v0.2.1. The changelog lives in HANDOFF.md.

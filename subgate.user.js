@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         subgate
 // @namespace    https://github.com/OWNER/subgate
-// @version      0.2.0
+// @version      0.2.1
 // @description  Blocks subreddits Reddit itself marks 18+, checked at page load so brand new communities are covered without waiting for a list update.
 // @match        *://*.reddit.com/*
 // @run-at       document-start

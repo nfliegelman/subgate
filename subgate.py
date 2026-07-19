@@ -26,7 +26,7 @@ import time
 import requests
 import yaml
 
-VERSION = "0.2.0"
+VERSION = "0.2.1"
 
 STATE_FILE = "subgate_state.json"
 FULL_LIST = "subgate_full.txt"
