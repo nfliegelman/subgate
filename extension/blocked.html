@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Blocked by subgate</title>
+  <style>
+    body { margin: 0; display: flex; align-items: center; justify-content: center;
+           height: 100vh; font-family: system-ui, sans-serif;
+           background: #141414; color: #e8e8e8; }
+    .card { text-align: center; max-width: 32rem; padding: 2rem; }
+    .title { font-size: 1.4rem; font-weight: 600; margin-bottom: .75rem; }
+    .body { opacity: .75; line-height: 1.5; }
+    .layer { opacity: .45; margin-top: 1.25rem; font-size: .85rem; }
+    button { margin-top: 1.5rem; background: #2a2a2a; color: #e8e8e8;
+             border: 1px solid #3a3a3a; border-radius: 6px;
+             padding: .5rem 1.1rem; font-size: .9rem; cursor: pointer; }
+    button:hover { background: #333; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="title">Blocked by subgate</div>
+    <div class="body">Reddit marks this community as 18+.</div>
+    <div class="layer">Decided by: network rule</div>
+    <button id="back">Take me back</button>
+  </div>
+  <script src="blocked.js"></script>
+</body>
+</html>

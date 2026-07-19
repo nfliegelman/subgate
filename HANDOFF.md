@@ -4,7 +4,7 @@ You are an AI assistant helping Noah modify this program. Noah is a data enthusi
 
 The prime directives, coding conventions, validation gates, and handback protocol live in the project instructions, not in this file. Read those first. If you are reading this repo without them (for example straight from GitHub), the two rules most expensive to miss are: never delete or hand back the state and data files listed in the manifest below, and never use em dashes anywhere. Then go find the full project instructions before editing.
 
-**Versioning:** semver (MAJOR.MINOR.PATCH) via git tags. PATCH for fixes and guard-preserving tweaks, MINOR for new features or roadmap phases, MAJOR for breaking changes to the data schema, list format, or state format. Bump `VERSION` in `subgate.py`, the tag, and add a changelog entry in the same commit as the code change. Current: v0.3.0.
+**Versioning:** semver (MAJOR.MINOR.PATCH) via git tags. PATCH for fixes and guard-preserving tweaks, MINOR for new features or roadmap phases, MAJOR for breaking changes to the data schema, list format, or state format. Bump `VERSION` in `subgate.py`, the tag, and add a changelog entry in the same commit as the code change. Current: v0.4.0.
 
 ---
 
@@ -57,6 +57,7 @@ List files: adblock syntax, header comments (`! Title`, `! Version`, `! Expires:
 ## 5. Handback manifest
 Ships in every handback (full files, zipped, never diffs):
 - `subgate.py`, `subgate.user.js`, `test_subgate.py`, `sources.yaml`, `manual_seeds.txt`, `force_block.txt`
+- `extension/` (manifest.json, background.js, content.js, blocked.html, blocked.js, options.html, options.js)
 - `setup.ps1`, `setup.sh`, `SETUP.md`
 - `HANDOFF.md`, `FUTURE.md`, `README.md`, `SETUP.md`, `gitignore.txt`
 - `.github/workflows/subgate.yml`
@@ -68,6 +69,18 @@ Never ships (the live track record; the workflow commits it back, git history is
 
 ## 6. Changelog
 Newest first. One entry per code change, in the same commit.
+
+### v0.4.0 (2026-07-19)
+- Phase 4 shipped: standalone browser extension in `extension/` (MV3, Chrome and Firefox). One install replaces the uBlock-list-plus-userscript pairing on desktop: background service worker downloads the list every 6 hours, maintains up to 28k declarativeNetRequest main-frame rules (redirecting to a bundled block page, with automatic fallback to plain block), and serves verdicts to a content script that covers in-app navigation via webNavigation events, with the markup tiebreaker retained for offline. Options page: list URL, ALLOW editor, verbose toggle, update-now, and a support link. No analytics, no bypass button, core blocking free by principle.
+- Workflow now personalizes OWNER placeholders in the extension files too and commits the folder.
+- New tests: manifest version lock and structure, script balance, placeholder guard. Deviation note: the extension lives in a subfolder, a deliberate exception to the root-files-only convention (see decision log).
+
+### v0.3.2 (2026-07-19)
+- Docs only: README rewritten as a click-by-click setup guide for every piece (Reddit account setting, uBlock Origin, AdGuard, Violentmonkey, Tampermonkey, private and incognito switches, NextDNS, phone reality, verification checks). Version bump keeps the userscript version lock in sync; no behavior change.
+
+### v0.3.1 (2026-07-19)
+- Fixed the userscript's dead list layer observed live (404 on the OWNER placeholder): Violentmonkey does not expose the install URL the way the self-locator expected. The workflow now personalizes every OWNER placeholder in subgate.user.js to the actual repo on each run and commits it, which also lights up @downloadURL/@updateURL so managers auto-update the script from then on.
+- Both lists now append feed-hygiene cosmetic rules (hide shreddit-post[nsfw], blurred preview containers, and old-reddit over18 entries) so NSFW thumbnails disappear from feeds and search instead of showing blurred teasers.
 
 ### v0.3.0 (2026-07-19)
 - Userscript rearchitected after a live miss (console showed `no 18+ signal found, page allowed: GOONED` on a ctrl-click load). Markup detection is demoted to last-resort tiebreaker. Verdict order is now: ALLOW list, then the owner's own published subgate list (auto-downloaded daily via GM_xmlhttpRequest, location self-derived from the install URL), then Reddit's flag through the Postpone mirror with a 7 day per-name cache, then markup. Any known 18+ community now blocks instantly on every navigation type, and brand new ones are caught by the mirror instead of by guessing at Reddit's DOM.
@@ -112,5 +125,7 @@ Longer-lived "why we chose X over Y" notes that outlast a single changelog line.
 - Unauthenticated fallback kept despite being slow: it makes local smoke tests possible with zero setup, and it is the honest path for a fresh clone before secrets exist.
 - Postpone's mirror chosen over a paid Reddit proxy or a self-hosted runner: it is free, already a project dependency, republishes Reddit's own field rather than a curated guess, and carries a refresh timestamp so staleness is observable. The tradeoff accepted is a third-party dependency for the authority itself, mitigated by the bulk-absence guard and by Reddit re-enabling automatically if approval ever lands.
 - Setup scripts use the GitHub CLI browser login rather than accepting a personal access token: a token pasted into a script or a chat is exposed and over-scoped, while `gh auth login` keeps the credential in the owner's own keychain. If a future session is offered a token, the correct response is to decline it and point at these scripts.
+- The extension ships with no disable toggle, no pause button, and no bypass on the block pages. This is a self-control tool; adding a convenient off switch defeats its purpose, and the burden of proof for ever adding one is very high.
+- The extension lives in `extension/`, a deliberate exception to the root-files-only convention: browser extensions require their own folder with a manifest at its root. Confined to this one folder.
 - Userscript verdicts are data-first, markup-last (v0.3.0): Reddit's DOM changed faster than selectors could track, and the miss was observed live on day one. The owner's own list plus the mirror are stable authorities; markup only breaks ties when the network is unavailable. The list URL is derived from GM_info's install URL so the script needs no per-user editing.
 - Userscript chosen over polling for new subreddits: it runs in the browser on a residential IP inside a logged-in session, which is traffic Reddit still permits, and it needs no approval. It also covers a subreddit created minutes ago, which no list-based approach can.

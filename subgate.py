@@ -26,7 +26,7 @@ import time
 import requests
 import yaml
 
-VERSION = "0.3.0"
+VERSION = "0.4.0"
 
 STATE_FILE = "subgate_state.json"
 FULL_LIST = "subgate_full.txt"
@@ -597,6 +597,15 @@ def verify_via_postpone(verifier, state, candidate_names, misses_before_gone, no
 
 RULE_PREFIX = "||reddit.com/r/"
 
+# Cosmetic rules appended to both lists: hide NSFW-tagged posts and blurred
+# previews inside feeds, search, and recommendations, instead of showing a
+# blurred teaser. Supported by uBlock and AdGuard.
+COSMETIC_RULES = [
+    "reddit.com##shreddit-post[nsfw]",
+    "reddit.com##shreddit-blurred-container",
+    "old.reddit.com##.over18",
+]
+
 
 def rule_line(name):
     # ||reddit.com matches every subdomain (www, old, sh, np, new). The ^
@@ -643,6 +652,8 @@ def write_list(path, entries, flavor, cap=None):
         f"! Entry count: {len(subset)}",
     ]
     lines += [rule_line(x["name"]) for x in subset]
+    lines += ["! Feed hygiene (hides NSFW teasers in feeds and search):"]
+    lines += COSMETIC_RULES
     with open(path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines) + "\n")
     return len(subset)

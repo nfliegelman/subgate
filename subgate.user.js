@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         subgate
 // @namespace    https://github.com/OWNER/subgate
-// @version      0.3.0
+// @version      0.4.0
 // @description  Blocks 18+ subreddits on any navigation type. Verdicts come from your own subgate list and Reddit's flag via the Postpone mirror; page markup is only a tiebreaker.
 // @match        *://*.reddit.com/*
 // @run-at       document-start
@@ -10,6 +10,8 @@
 // @grant        GM_setValue
 // @connect      raw.githubusercontent.com
 // @connect      api.postpone.app
+// @downloadURL  https://raw.githubusercontent.com/OWNER/subgate/main/subgate.user.js
+// @updateURL    https://raw.githubusercontent.com/OWNER/subgate/main/subgate.user.js
 // ==/UserScript==
 
 /*

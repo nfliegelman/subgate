@@ -137,7 +137,9 @@ def test_write_list_header_and_cap(tmp_path):
     lines = path.read_text().splitlines()
     assert lines[0] == "! Title: subgate (chrome)"
     assert "! Entry count: 2" in lines
-    assert lines[-2:] == ["||reddit.com/r/A^$all", "||reddit.com/r/B^$all"]
+    net = [ln for ln in lines if ln.startswith("||")]
+    assert net == ["||reddit.com/r/A^$all", "||reddit.com/r/B^$all"]
+    assert "reddit.com##shreddit-post[nsfw]" in lines  # feed hygiene ships
 
 
 def test_state_roundtrip(tmp_path):
@@ -238,7 +240,7 @@ def test_full_pipeline_mocked(tmp_path, monkeypatch):
         assert "zz_ghost_zz" not in state["subs"]
         assert state["subs"]["nsfw"]["name"] == "NSFW"  # canonical casing kept
         full = (tmp_path / subgate.FULL_LIST).read_text().splitlines()
-        rules = [ln for ln in full if not ln.startswith("!")]
+        rules = [ln for ln in full if ln.startswith("||")]
         assert rules == [
             "||reddit.com/r/gonewild^$all",
             "||reddit.com/r/NSFW^$all",
@@ -247,7 +249,7 @@ def test_full_pipeline_mocked(tmp_path, monkeypatch):
         ]
         assert "! Entry count: 4" in full
         chrome = (tmp_path / subgate.CHROME_LIST).read_text().splitlines()
-        assert sum(1 for ln in chrome if not ln.startswith("!")) == 3  # cap applied
+        assert sum(1 for ln in chrome if ln.startswith("||")) == 3  # cap applied
 
 
 def test_postpone_graphql_scraper(monkeypatch):
@@ -461,6 +463,25 @@ def test_setup_scripts_never_handle_tokens():
 def test_userscript_version_tracks_module_version():
     src = open(os.path.join(REPO_ROOT, "subgate.user.js"), encoding="utf-8").read()
     assert f"@version      {subgate.VERSION}" in src
+
+
+def test_extension_manifest_and_scripts():
+    ext = os.path.join(REPO_ROOT, "extension")
+    with open(os.path.join(ext, "manifest.json"), encoding="utf-8") as f:
+        m = json.load(f)
+    assert m["manifest_version"] == 3
+    assert m["version"] == subgate.VERSION, "manifest version must track VERSION"
+    assert "declarativeNetRequest" in m["permissions"]
+    assert "webNavigation" in m["permissions"]
+    hosts = " ".join(m["host_permissions"])
+    for needed in ("reddit.com", "raw.githubusercontent.com", "api.postpone.app"):
+        assert needed in hosts
+    for fn in ("background.js", "content.js", "blocked.js", "options.js"):
+        src = open(os.path.join(ext, fn), encoding="utf-8").read()
+        assert src.count("(") == src.count(")"), fn
+        assert src.count("{") == src.count("}"), fn
+    bg = open(os.path.join(ext, "background.js"), encoding="utf-8").read()
+    assert "OWNER/subgate" in bg, "placeholder must ship; the workflow personalizes it"
 
 
 def test_no_em_dashes_anywhere():

@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "subgate",
+  "version": "0.4.0",
+  "description": "Keep Reddit. Lose the porn. Blocks 18+ subreddits using Reddit's own flags.",
+  "permissions": ["storage", "alarms", "declarativeNetRequest", "webNavigation"],
+  "host_permissions": [
+    "*://*.reddit.com/*",
+    "https://raw.githubusercontent.com/*",
+    "https://api.postpone.app/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.reddit.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html"],
+      "matches": ["*://*.reddit.com/*"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "subgate@owner.github",
+      "strict_min_version": "121.0"
+    }
+  }
+}
