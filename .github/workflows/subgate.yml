@@ -1,0 +1,66 @@
+name: subgate
+
+on:
+  schedule:
+    - cron: "13 3,9,15,21 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "run (daily update) or bootstrap (one time deep harvest)"
+        required: false
+        default: "run"
+        type: choice
+        options:
+          - run
+          - bootstrap
+      force_scrape:
+        description: "re-scrape directory sources even off schedule"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: subgate
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests pyyaml
+
+      - name: Run subgate
+        env:
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
+        run: |
+          MODE="${{ github.event.inputs.mode || 'run' }}"
+          EXTRA=""
+          if [ "${{ github.event.inputs.force_scrape }}" = "true" ]; then
+            EXTRA="--force-scrape"
+          fi
+          python subgate.py "$MODE" $EXTRA
+
+      - name: Commit updated state and lists
+        run: |
+          git config user.name "subgate-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add subgate_state.json subgate_full.txt subgate_chrome.txt
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "subgate: automated update"
+            git push
+          fi
