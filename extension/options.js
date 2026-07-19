@@ -2,7 +2,7 @@
 "use strict";
 
 var DEFAULTS = {
-  listUrl: "https://raw.githubusercontent.com/OWNER/subgate/main/subgate_full.txt",
+  listUrl: "https://raw.githubusercontent.com/nfliegelman/subgate/main/subgate_full.txt",
   allow: ["pornfree", "nofap"],
   verbose: true
 };

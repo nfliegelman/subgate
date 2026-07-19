@@ -17,7 +17,7 @@
 "use strict";
 
 var DEFAULT_LIST_URL =
-  "https://raw.githubusercontent.com/OWNER/subgate/main/subgate_full.txt";
+  "https://raw.githubusercontent.com/nfliegelman/subgate/main/subgate_full.txt";
 var MIRROR_URL = "https://api.postpone.app/public/graphql";
 var LIST_TTL_MS = 24 * 60 * 60 * 1000;
 var VERDICT_TTL_MS = 7 * 24 * 60 * 60 * 1000;

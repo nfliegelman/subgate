@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         subgate
-// @namespace    https://github.com/OWNER/subgate
+// @namespace    https://github.com/nfliegelman/subgate
 // @version      0.4.0
 // @description  Blocks 18+ subreddits on any navigation type. Verdicts come from your own subgate list and Reddit's flag via the Postpone mirror; page markup is only a tiebreaker.
 // @match        *://*.reddit.com/*
@@ -10,8 +10,8 @@
 // @grant        GM_setValue
 // @connect      raw.githubusercontent.com
 // @connect      api.postpone.app
-// @downloadURL  https://raw.githubusercontent.com/OWNER/subgate/main/subgate.user.js
-// @updateURL    https://raw.githubusercontent.com/OWNER/subgate/main/subgate.user.js
+// @downloadURL  https://raw.githubusercontent.com/nfliegelman/subgate/main/subgate.user.js
+// @updateURL    https://raw.githubusercontent.com/nfliegelman/subgate/main/subgate.user.js
 // ==/UserScript==
 
 /*
@@ -43,7 +43,7 @@
 
   // Only used when the script cannot work out where it was installed from.
   var LIST_URL_FALLBACK =
-    "https://raw.githubusercontent.com/OWNER/subgate/main/subgate_full.txt";
+    "https://raw.githubusercontent.com/nfliegelman/subgate/main/subgate_full.txt";
 
   var VERBOSE = true;          // set false later to quiet the console
   var HIDE_MS = 3500;          // media stays hidden this long while checking
