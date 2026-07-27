@@ -1,9 +1,9 @@
 ! Title: subgate (full)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-07-26T22:16:06Z
+! Version: 2026-07-27T06:44:31Z
 ! Expires: 1 day
-! Entry count: 51734
+! Entry count: 51733
 ||reddit.com/r/gonewild^$all
 ||reddit.com/r/gooned^$all
 ||reddit.com/r/cumsluts^$all
@@ -23334,7 +23334,6 @@
 ||reddit.com/r/texas_hsvswingers^$all
 ||reddit.com/r/manicmomo^$all
 ||reddit.com/r/chubby__bbw^$all
-||reddit.com/r/win^$all
 ||reddit.com/r/clothedrudeness^$all
 ||reddit.com/r/cutelatinateens^$all
 ||reddit.com/r/delawarebbw^$all
