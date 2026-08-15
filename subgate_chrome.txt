@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-08-14T21:43:02Z
+! Version: 2026-08-15T03:57:00Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -18015,7 +18015,6 @@
 ||reddit.com/r/donna_ambrose^$all
 ||reddit.com/r/girlydick^$all
 ||reddit.com/r/southernwvmeetnbang^$all
-||reddit.com/r/mouthaction^$all
 ||reddit.com/r/forestfayee^$all
 ||reddit.com/r/onlyfanscollabscanada^$all
 ||reddit.com/r/titsandtongues^$all
@@ -20004,6 +20003,7 @@
 ||reddit.com/r/patnacuckolding^$all
 ||reddit.com/r/analgoon^$all
 ||reddit.com/r/utahcock^$all
+||reddit.com/r/hot_wet_doc^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
