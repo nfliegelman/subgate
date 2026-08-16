@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-08-16T10:28:22Z
+! Version: 2026-08-16T15:39:07Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -1647,7 +1647,6 @@
 ||reddit.com/r/peekink^$all
 ||reddit.com/r/bimbo^$all
 ||reddit.com/r/bunnygirls^$all
-||reddit.com/r/gloryho^$all
 ||reddit.com/r/love_my_bush^$all
 ||reddit.com/r/socalswingers^$all
 ||reddit.com/r/derpixon^$all
@@ -2145,7 +2144,6 @@
 ||reddit.com/r/smallbreastsarebest^$all
 ||reddit.com/r/madison_ivy^$all
 ||reddit.com/r/godbody^$all
-||reddit.com/r/gloryholegals^$all
 ||reddit.com/r/texastittys^$all
 ||reddit.com/r/orgysexporn^$all
 ||reddit.com/r/ridingtitsface^$all
@@ -5946,7 +5944,6 @@
 ||reddit.com/r/alkethadea^$all
 ||reddit.com/r/onherkneesblowjob^$all
 ||reddit.com/r/censoredbnwo^$all
-||reddit.com/r/coupleswhowatchgw^$all
 ||reddit.com/r/transfem18^$all
 ||reddit.com/r/celebrity_soles^$all
 ||reddit.com/r/amateur_pov^$all
@@ -20004,6 +20001,9 @@
 ||reddit.com/r/hotwife_playhouse^$all
 ||reddit.com/r/tanksluts^$all
 ||reddit.com/r/orlandogloryhole^$all
+||reddit.com/r/chavorslav^$all
+||reddit.com/r/scissoringirlies^$all
+||reddit.com/r/850pineapple^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
