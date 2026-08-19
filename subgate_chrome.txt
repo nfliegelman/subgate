@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-08-19T09:52:32Z
+! Version: 2026-08-19T15:49:13Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -16038,7 +16038,6 @@
 ||reddit.com/r/gaycumloversss^$all
 ||reddit.com/r/ilovebellyfetish^$all
 ||reddit.com/r/cutefuckshim^$all
-||reddit.com/r/bbwbrapantys^$all
 ||reddit.com/r/subnauticansfw^$all
 ||reddit.com/r/voltfables^$all
 ||reddit.com/r/bbw_inblacknwhite^$all
@@ -16694,7 +16693,6 @@
 ||reddit.com/r/mexicanchacales^$all
 ||reddit.com/r/wifetradeers^$all
 ||reddit.com/r/femboyfeetlover^$all
-||reddit.com/r/prettyfaceandass^$all
 ||reddit.com/r/aether_nsfw^$all
 ||reddit.com/r/towelgonewild^$all
 ||reddit.com/r/boytails^$all
@@ -17465,7 +17463,6 @@
 ||reddit.com/r/purelactation^$all
 ||reddit.com/r/fansly_nature^$all
 ||reddit.com/r/pinkhairednsfw^$all
-||reddit.com/r/aheagonsfw^$all
 ||reddit.com/r/mombuttsandcoldcuts^$all
 ||reddit.com/r/purelypanties^$all
 ||reddit.com/r/sexy_bikinis^$all
@@ -18182,7 +18179,6 @@
 ||reddit.com/r/scatsellingreddit^$all
 ||reddit.com/r/dominatrixfeet^$all
 ||reddit.com/r/emakarterlovers^$all
-||reddit.com/r/chubbyblonde^$all
 ||reddit.com/r/michigan_meets^$all
 ||reddit.com/r/prettywrists^$all
 ||reddit.com/r/magicmirrorgw^$all
@@ -18838,7 +18834,6 @@
 ||reddit.com/r/ai_teens_gone_wild^$all
 ||reddit.com/r/hentaicumplay^$all
 ||reddit.com/r/southafricacontent^$all
-||reddit.com/r/30sand40s^$all
 ||reddit.com/r/patnahookupgw^$all
 ||reddit.com/r/indy_hookups^$all
 ||reddit.com/r/onlyfansgroup^$all
@@ -19255,7 +19250,6 @@
 ||reddit.com/r/onlyfans_perfectass^$all
 ||reddit.com/r/slim_fit_or_thick^$all
 ||reddit.com/r/gaysexcum^$all
-||reddit.com/r/girlsloveasslicking^$all
 ||reddit.com/r/selena_black_new^$all
 ||reddit.com/r/catheterlove^$all
 ||reddit.com/r/girlshavedickstoo^$all
@@ -19339,7 +19333,6 @@
 ||reddit.com/r/fargo_ndgaynsfw^$all
 ||reddit.com/r/onlyfanspantyhose^$all
 ||reddit.com/r/puertovallartasex^$all
-||reddit.com/r/toplesscoffeelovers^$all
 ||reddit.com/r/hugeroundboobs^$all
 ||reddit.com/r/iwant2behim^$all
 ||reddit.com/r/lewdgamesnsfw^$all
@@ -20004,6 +19997,13 @@
 ||reddit.com/r/hotwife_playhouse^$all
 ||reddit.com/r/indiansgwstories^$all
 ||reddit.com/r/tanksluts^$all
+||reddit.com/r/orlandogloryhole^$all
+||reddit.com/r/vansgw^$all
+||reddit.com/r/chavorslav^$all
+||reddit.com/r/850pineapple^$all
+||reddit.com/r/aiporndaily^$all
+||reddit.com/r/patnacuckolding^$all
+||reddit.com/r/analgoon^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
