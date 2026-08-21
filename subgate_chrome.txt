@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-08-21T04:04:12Z
+! Version: 2026-08-21T09:55:41Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -1088,7 +1088,6 @@
 ||reddit.com/r/fbb_nsfw^$all
 ||reddit.com/r/3dhentai^$all
 ||reddit.com/r/faceofpain^$all
-||reddit.com/r/roughscenes^$all
 ||reddit.com/r/perkychubby^$all
 ||reddit.com/r/annaralphs_^$all
 ||reddit.com/r/fauxbait^$all
@@ -17702,7 +17701,6 @@
 ||reddit.com/r/virginityexchange_^$all
 ||reddit.com/r/tiktok_latinas_lo^$all
 ||reddit.com/r/taylorvixenxxx^$all
-||reddit.com/r/toppawg^$all
 ||reddit.com/r/chamberofsmut^$all
 ||reddit.com/r/hotmilfteachers^$all
 ||reddit.com/r/fanslyredheads^$all
@@ -20004,6 +20002,8 @@
 ||reddit.com/r/fans_alana_cruise^$all
 ||reddit.com/r/onlyamateurfacials^$all
 ||reddit.com/r/orgyoasis^$all
+||reddit.com/r/bustyonlyfanspromos^$all
+||reddit.com/r/gymmen^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
