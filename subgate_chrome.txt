@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-09-04T23:07:44Z
+! Version: 2026-09-05T07:43:08Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -8174,7 +8174,6 @@
 ||reddit.com/r/nextdoornudists^$all
 ||reddit.com/r/mombodsnude^$all
 ||reddit.com/r/preggobbw^$all
-||reddit.com/r/girlcosplayers^$all
 ||reddit.com/r/tomboygf^$all
 ||reddit.com/r/casual_cfnm^$all
 ||reddit.com/r/wetting^$all
@@ -10767,7 +10766,6 @@
 ||reddit.com/r/gaysome^$all
 ||reddit.com/r/amateur_exhibitionist^$all
 ||reddit.com/r/cumonleggins^$all
-||reddit.com/r/bdsmonlyfans_pages^$all
 ||reddit.com/r/dronification^$all
 ||reddit.com/r/fuzzyfluffycomfy^$all
 ||reddit.com/r/hookupcebu^$all
@@ -11248,7 +11246,6 @@
 ||reddit.com/r/matureheelsnsfw^$all
 ||reddit.com/r/girls_r_free_2_pee^$all
 ||reddit.com/r/themandingoclub^$all
-||reddit.com/r/ballsfocused^$all
 ||reddit.com/r/pornmags^$all
 ||reddit.com/r/milfs_cougars^$all
 ||reddit.com/r/israelonlyfans^$all
@@ -20004,6 +20001,9 @@
 ||reddit.com/r/fashionslut^$all
 ||reddit.com/r/omegaversekink^$all
 ||reddit.com/r/pantybeauties^$all
+||reddit.com/r/hotgirls_collection^$all
+||reddit.com/r/flawesome^$all
+||reddit.com/r/pantyhoseforall^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
