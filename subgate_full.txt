@@ -1,9 +1,9 @@
 ! Title: subgate (full)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-09-06T12:58:09Z
+! Version: 2026-09-06T17:42:26Z
 ! Expires: 1 day
-! Entry count: 81582
+! Entry count: 81578
 ||reddit.com/r/gonewild^$all
 ||reddit.com/r/gooned^$all
 ||reddit.com/r/cumsluts^$all
@@ -7489,7 +7489,6 @@
 ||reddit.com/r/virginkillersweater^$all
 ||reddit.com/r/asahimizuno^$all
 ||reddit.com/r/pdx_sex^$all
-||reddit.com/r/findaleague^$all
 ||reddit.com/r/cutekorean^$all
 ||reddit.com/r/gunsandgirls^$all
 ||reddit.com/r/ncswingersparadise^$all
@@ -9287,7 +9286,6 @@
 ||reddit.com/r/bumplove^$all
 ||reddit.com/r/tgirlsandtoys^$all
 ||reddit.com/r/siswetofficial^$all
-||reddit.com/r/theodysseyhadapurpose^$all
 ||reddit.com/r/agathavegansfw^$all
 ||reddit.com/r/outiesgw^$all
 ||reddit.com/r/callforbooty^$all
@@ -17677,7 +17675,6 @@
 ||reddit.com/r/hillsboroughfl_r4r^$all
 ||reddit.com/r/monsterfuckerdnd^$all
 ||reddit.com/r/zom100_hentai^$all
-||reddit.com/r/bikink^$all
 ||reddit.com/r/camgirlgifs^$all
 ||reddit.com/r/bralesssfw^$all
 ||reddit.com/r/faceless_slut^$all
@@ -19909,7 +19906,6 @@
 ||reddit.com/r/shibari_sluts^$all
 ||reddit.com/r/nsfw_sex_discussion^$all
 ||reddit.com/r/artsyelly^$all
-||reddit.com/r/crossdresserhaven^$all
 ||reddit.com/r/edgingjoi^$all
 ||reddit.com/r/backdoorsex^$all
 ||reddit.com/r/domestic_discipline^$all
