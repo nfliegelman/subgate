@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-09-08T18:42:02Z
+! Version: 2026-09-08T23:27:43Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -6027,7 +6027,6 @@
 ||reddit.com/r/amour_angels^$all
 ||reddit.com/r/cmnf^$all
 ||reddit.com/r/alkethadea^$all
-||reddit.com/r/onherkneesblowjob^$all
 ||reddit.com/r/naughtymomsgonewild^$all
 ||reddit.com/r/transfem18^$all
 ||reddit.com/r/celebrity_soles^$all
@@ -11588,7 +11587,6 @@
 ||reddit.com/r/brandytalore^$all
 ||reddit.com/r/longhairsexporn^$all
 ||reddit.com/r/mature_roma^$all
-||reddit.com/r/fuckinginlove^$all
 ||reddit.com/r/gayincestfantasies^$all
 ||reddit.com/r/girlsinred^$all
 ||reddit.com/r/roanokegonewild^$all
@@ -20004,6 +20002,8 @@
 ||reddit.com/r/dominaelara^$all
 ||reddit.com/r/uncoveredhole^$all
 ||reddit.com/r/tittopia^$all
+||reddit.com/r/biggerthanyou^$all
+||reddit.com/r/nsfw_4_women^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
