@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-09-21T15:59:00Z
+! Version: 2026-09-22T00:09:21Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -13044,7 +13044,6 @@
 ||reddit.com/r/cumshotrates^$all
 ||reddit.com/r/armbinders^$all
 ||reddit.com/r/cncfindercanada^$all
-||reddit.com/r/thecutestamateurs^$all
 ||reddit.com/r/ipo^$all
 ||reddit.com/r/transmarylanddmv^$all
 ||reddit.com/r/bdsmclip^$all
@@ -13671,7 +13670,6 @@
 ||reddit.com/r/littlesubgirl^$all
 ||reddit.com/r/nudflixbbc^$all
 ||reddit.com/r/fanslypawgs^$all
-||reddit.com/r/fitathleticbabes^$all
 ||reddit.com/r/unzipped^$all
 ||reddit.com/r/bestbuttholes^$all
 ||reddit.com/r/alonegirlspleasure^$all
@@ -15817,7 +15815,6 @@
 ||reddit.com/r/pussyhairxxx^$all
 ||reddit.com/r/sneakersandchicks^$all
 ||reddit.com/r/fantasmeauditif^$all
-||reddit.com/r/meninbeds^$all
 ||reddit.com/r/fuckingfancy^$all
 ||reddit.com/r/trampstampanal^$all
 ||reddit.com/r/azianistudios^$all
@@ -20004,6 +20001,9 @@
 ||reddit.com/r/swv4fun^$all
 ||reddit.com/r/holidaygirls^$all
 ||reddit.com/r/pussygoddess^$all
+||reddit.com/r/pornocovers^$all
+||reddit.com/r/verifiedmnfemalesonly^$all
+||reddit.com/r/aicumshot^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
