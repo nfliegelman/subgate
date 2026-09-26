@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-09-26T13:50:16Z
+! Version: 2026-09-26T18:39:22Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -2175,7 +2175,6 @@
 ||reddit.com/r/stillstraightcaptions^$all
 ||reddit.com/r/yologirlsnetwork^$all
 ||reddit.com/r/sweetiefoxclub^$all
-||reddit.com/r/ridingtitsface^$all
 ||reddit.com/r/casualjiggles^$all
 ||reddit.com/r/asianinvasion^$all
 ||reddit.com/r/amateurblowjobss^$all
@@ -12842,7 +12841,6 @@
 ||reddit.com/r/sg_gone_mild^$all
 ||reddit.com/r/askwomenadvicensfw^$all
 ||reddit.com/r/degradedungeon^$all
-||reddit.com/r/hairypussyftw^$all
 ||reddit.com/r/tymwits^$all
 ||reddit.com/r/tatianaschwartz^$all
 ||reddit.com/r/girlspissongirls^$all
@@ -12871,7 +12869,6 @@
 ||reddit.com/r/hentaiaiparadise^$all
 ||reddit.com/r/assteasing^$all
 ||reddit.com/r/fargondgonewild^$all
-||reddit.com/r/pussyinsertions^$all
 ||reddit.com/r/sissydiaperhentai^$all
 ||reddit.com/r/gwbeautifulagony^$all
 ||reddit.com/r/diysiliconetoys^$all
@@ -17701,7 +17698,6 @@
 ||reddit.com/r/rileysmind^$all
 ||reddit.com/r/bipersonalsnz^$all
 ||reddit.com/r/faina_bona^$all
-||reddit.com/r/beardsandboners1^$all
 ||reddit.com/r/rule34reborn^$all
 ||reddit.com/r/diamondtittieslite^$all
 ||reddit.com/r/dnp^$all
@@ -20004,6 +20000,10 @@
 ||reddit.com/r/amyvillainouss^$all
 ||reddit.com/r/toothlessnsfw^$all
 ||reddit.com/r/fitigmilfs^$all
+||reddit.com/r/smokingmodels^$all
+||reddit.com/r/thefreshest^$all
+||reddit.com/r/frenchchastityclub^$all
+||reddit.com/r/yakuzahentai^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
