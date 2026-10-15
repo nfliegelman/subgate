@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-10-15T19:11:43Z
+! Version: 2026-10-15T23:46:05Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -7904,7 +7904,6 @@
 ||reddit.com/r/totalinsertion^$all
 ||reddit.com/r/amatuer_milfs_over_30^$all
 ||reddit.com/r/beautifulvaginas^$all
-||reddit.com/r/sexdrivennympho^$all
 ||reddit.com/r/clothedxfuck^$all
 ||reddit.com/r/diamondjacksonnew^$all
 ||reddit.com/r/thepigfarm^$all
@@ -8358,7 +8357,6 @@
 ||reddit.com/r/saggyboobsnsfw^$all
 ||reddit.com/r/frenchplaisir^$all
 ||reddit.com/r/connecticutr4r^$all
-||reddit.com/r/gaysex_nsfw^$all
 ||reddit.com/r/onlyfanseasterneurope^$all
 ||reddit.com/r/couplesboudoir^$all
 ||reddit.com/r/knockers^$all
@@ -12471,7 +12469,6 @@
 ||reddit.com/r/madisonwildexxx^$all
 ||reddit.com/r/ncpublicdares^$all
 ||reddit.com/r/husbandsinchastity^$all
-||reddit.com/r/bleachnsfw25^$all
 ||reddit.com/r/telegram_videocalls^$all
 ||reddit.com/r/femdommommies^$all
 ||reddit.com/r/sexyasmrwomenn^$all
@@ -20004,6 +20001,9 @@
 ||reddit.com/r/dtf_albuquerque_nm^$all
 ||reddit.com/r/killarstockholm^$all
 ||reddit.com/r/littlefingersph^$all
+||reddit.com/r/daisydoowatts^$all
+||reddit.com/r/pensacolapawgs^$all
+||reddit.com/r/stlcocksuckers^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
