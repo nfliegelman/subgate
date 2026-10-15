@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-10-14T23:59:54Z
+! Version: 2026-10-15T08:19:04Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -2642,7 +2642,6 @@
 ||reddit.com/r/pptts^$all
 ||reddit.com/r/yourfavonlyfans^$all
 ||reddit.com/r/publicplaying^$all
-||reddit.com/r/heartshapedpussy^$all
 ||reddit.com/r/nsfw_pregnant^$all
 ||reddit.com/r/wife_boobs^$all
 ||reddit.com/r/butterflylabia^$all
@@ -3302,7 +3301,6 @@
 ||reddit.com/r/schoolgirlsluts^$all
 ||reddit.com/r/colorsofboobs^$all
 ||reddit.com/r/transforbbc^$all
-||reddit.com/r/teenanal_^$all
 ||reddit.com/r/onlyfanschubbybbw^$all
 ||reddit.com/r/lucyli^$all
 ||reddit.com/r/bigfeetgirls^$all
@@ -6964,7 +6962,6 @@
 ||reddit.com/r/lanarose2^$all
 ||reddit.com/r/rosafucks^$all
 ||reddit.com/r/straightporn4bieyes^$all
-||reddit.com/r/foreskin_restoration^$all
 ||reddit.com/r/angionmethod^$all
 ||reddit.com/r/virginiaswingers^$all
 ||reddit.com/r/aussiecouples^$all
@@ -9850,7 +9847,6 @@
 ||reddit.com/r/cumcoveredpornstars^$all
 ||reddit.com/r/hunting_gone_wild^$all
 ||reddit.com/r/southwestohionsfw^$all
-||reddit.com/r/sissylocator^$all
 ||reddit.com/r/outdoorsgirls^$all
 ||reddit.com/r/desigone_wild^$all
 ||reddit.com/r/feetonface^$all
@@ -15058,7 +15054,6 @@
 ||reddit.com/r/redhairedpornstars^$all
 ||reddit.com/r/skybrileaks0^$all
 ||reddit.com/r/brasileirasfagostosas^$all
-||reddit.com/r/pussyeatingnsfw^$all
 ||reddit.com/r/fuckedinfishnets^$all
 ||reddit.com/r/goregrind^$all
 ||reddit.com/r/302nude^$all
@@ -20004,6 +19999,11 @@
 ||reddit.com/r/dtf_albuquerque_nm^$all
 ||reddit.com/r/killarstockholm^$all
 ||reddit.com/r/littlefingersph^$all
+||reddit.com/r/daisydoowatts^$all
+||reddit.com/r/pensacolapawgs^$all
+||reddit.com/r/stlcocksuckers^$all
+||reddit.com/r/shawn_johnson^$all
+||reddit.com/r/imsiiimone_nsfw^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
