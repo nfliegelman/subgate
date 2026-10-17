@@ -1,7 +1,7 @@
 ! Title: subgate (full)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-10-17T17:57:35Z
+! Version: 2026-10-17T23:10:37Z
 ! Expires: 1 day
 ! Entry count: 84985
 ||reddit.com/r/gonewild^$all
