@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-10-18T08:04:57Z
+! Version: 2026-10-18T13:19:19Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -531,7 +531,6 @@
 ||reddit.com/r/highresnsfw^$all
 ||reddit.com/r/swipetostrip^$all
 ||reddit.com/r/nsfwgenuniebeauties^$all
-||reddit.com/r/borntobesluts^$all
 ||reddit.com/r/feminization^$all
 ||reddit.com/r/babes^$all
 ||reddit.com/r/assinthong^$all
@@ -1013,7 +1012,6 @@
 ||reddit.com/r/heteroflexible^$all
 ||reddit.com/r/momsmilfsmaturesgilfs^$all
 ||reddit.com/r/pregnantpetite^$all
-||reddit.com/r/beefylabia^$all
 ||reddit.com/r/nhentai^$all
 ||reddit.com/r/cumhentai^$all
 ||reddit.com/r/theblackeddominion^$all
@@ -7421,7 +7419,6 @@
 ||reddit.com/r/celebbraillenipples^$all
 ||reddit.com/r/altbunnies^$all
 ||reddit.com/r/tighttummytease^$all
-||reddit.com/r/hotmen_nsfw^$all
 ||reddit.com/r/animepantsu^$all
 ||reddit.com/r/goontoboobs^$all
 ||reddit.com/r/femalebellylovers^$all
@@ -16683,7 +16680,6 @@
 ||reddit.com/r/airbrushedpussy^$all
 ||reddit.com/r/sexytransgirlss^$all
 ||reddit.com/r/shecums_hedoesnt^$all
-||reddit.com/r/asukawwe^$all
 ||reddit.com/r/kamitora^$all
 ||reddit.com/r/beautifulpussy_^$all
 ||reddit.com/r/handtoglandcombat^$all
@@ -20004,6 +20000,10 @@
 ||reddit.com/r/genxnude^$all
 ||reddit.com/r/thickgreekblue^$all
 ||reddit.com/r/chasity_cage_sluts^$all
+||reddit.com/r/clevelandm4m^$all
+||reddit.com/r/dita_v^$all
+||reddit.com/r/deathtonotsamm^$all
+||reddit.com/r/girlsthatsuckdick^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
