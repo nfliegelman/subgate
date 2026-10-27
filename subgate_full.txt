@@ -1,9 +1,9 @@
 ! Title: subgate (full)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-10-27T08:59:40Z
+! Version: 2026-10-27T15:24:52Z
 ! Expires: 1 day
-! Entry count: 85353
+! Entry count: 85350
 ||reddit.com/r/gonewild^$all
 ||reddit.com/r/gooned^$all
 ||reddit.com/r/cumsluts^$all
@@ -3138,7 +3138,6 @@
 ||reddit.com/r/girlshumpinggirls^$all
 ||reddit.com/r/asiancumdumpsters^$all
 ||reddit.com/r/girlcockegirlgooning^$all
-||reddit.com/r/transwilly^$all
 ||reddit.com/r/sybila^$all
 ||reddit.com/r/smalldickhumiliation^$all
 ||reddit.com/r/masturbating4u^$all
@@ -20463,7 +20462,6 @@
 ||reddit.com/r/pasissymeet^$all
 ||reddit.com/r/ancientgirlsgonewild^$all
 ||reddit.com/r/miami_hot_babes^$all
-||reddit.com/r/erotic_captions^$all
 ||reddit.com/r/locktober_^$all
 ||reddit.com/r/hotwife_playhouse^$all
 ||reddit.com/r/tanksluts^$all
@@ -22304,7 +22302,6 @@
 ||reddit.com/r/boyforsalexxx^$all
 ||reddit.com/r/bicum^$all
 ||reddit.com/r/swampmen^$all
-||reddit.com/r/ai_lewds^$all
 ||reddit.com/r/jacky_q^$all
 ||reddit.com/r/disabledswunion^$all
 ||reddit.com/r/jarlsaudiovalhalla^$all
