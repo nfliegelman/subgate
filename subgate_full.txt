@@ -1,9 +1,9 @@
 ! Title: subgate (full)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-10-30T10:01:55Z
+! Version: 2026-10-30T20:02:18Z
 ! Expires: 1 day
-! Entry count: 85384
+! Entry count: 85381
 ||reddit.com/r/gonewild^$all
 ||reddit.com/r/gooned^$all
 ||reddit.com/r/cumsluts^$all
@@ -168,7 +168,6 @@
 ||reddit.com/r/gonewild30plus^$all
 ||reddit.com/r/ebony^$all
 ||reddit.com/r/couplesporn^$all
-||reddit.com/r/asiannsfw^$all
 ||reddit.com/r/momsonincest^$all
 ||reddit.com/r/maturemilf^$all
 ||reddit.com/r/step_fantasy_gifs^$all
@@ -8927,7 +8926,6 @@
 ||reddit.com/r/therealpawghalla^$all
 ||reddit.com/r/gayjockstrapsex^$all
 ||reddit.com/r/asianarmpits^$all
-||reddit.com/r/gymsharknsfw^$all
 ||reddit.com/r/timelapsehentai^$all
 ||reddit.com/r/melbournedogging^$all
 ||reddit.com/r/midwestgirlsnsfw^$all
@@ -10622,7 +10620,6 @@
 ||reddit.com/r/akingscrown^$all
 ||reddit.com/r/thongpanties^$all
 ||reddit.com/r/mlp_after_dark^$all
-||reddit.com/r/bighangers^$all
 ||reddit.com/r/thebootychurch^$all
 ||reddit.com/r/actress_vibes^$all
 ||reddit.com/r/bangalore_swing_club^$all

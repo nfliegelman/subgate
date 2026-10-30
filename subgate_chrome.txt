@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-10-30T10:01:55Z
+! Version: 2026-10-30T20:02:18Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -168,7 +168,6 @@
 ||reddit.com/r/gonewild30plus^$all
 ||reddit.com/r/ebony^$all
 ||reddit.com/r/couplesporn^$all
-||reddit.com/r/asiannsfw^$all
 ||reddit.com/r/momsonincest^$all
 ||reddit.com/r/maturemilf^$all
 ||reddit.com/r/step_fantasy_gifs^$all
@@ -8927,7 +8926,6 @@
 ||reddit.com/r/therealpawghalla^$all
 ||reddit.com/r/gayjockstrapsex^$all
 ||reddit.com/r/asianarmpits^$all
-||reddit.com/r/gymsharknsfw^$all
 ||reddit.com/r/timelapsehentai^$all
 ||reddit.com/r/melbournedogging^$all
 ||reddit.com/r/midwestgirlsnsfw^$all
@@ -10622,7 +10620,6 @@
 ||reddit.com/r/akingscrown^$all
 ||reddit.com/r/thongpanties^$all
 ||reddit.com/r/mlp_after_dark^$all
-||reddit.com/r/bighangers^$all
 ||reddit.com/r/thebootychurch^$all
 ||reddit.com/r/actress_vibes^$all
 ||reddit.com/r/bangalore_swing_club^$all
@@ -20004,6 +20001,9 @@
 ||reddit.com/r/pawgnextdoor^$all
 ||reddit.com/r/sapphireswallows^$all
 ||reddit.com/r/anita_blanche_xxx^$all
+||reddit.com/r/mdmamollygonewild_^$all
+||reddit.com/r/aberdeenr4r^$all
+||reddit.com/r/brakink2^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
