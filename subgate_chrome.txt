@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-11-03T21:03:56Z
+! Version: 2026-11-04T01:23:40Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -7621,7 +7621,6 @@
 ||reddit.com/r/umekoj^$all
 ||reddit.com/r/verifiedsexy^$all
 ||reddit.com/r/femdomfacefuck^$all
-||reddit.com/r/extreme_boobs^$all
 ||reddit.com/r/zenlesszonezero_r34^$all
 ||reddit.com/r/highheelgalore^$all
 ||reddit.com/r/milfbods^$all
@@ -8450,7 +8449,6 @@
 ||reddit.com/r/thickandbbwjeans^$all
 ||reddit.com/r/cowgirlhentai^$all
 ||reddit.com/r/naughtynationx^$all
-||reddit.com/r/footporn^$all
 ||reddit.com/r/nonnudecollection^$all
 ||reddit.com/r/sweatymoe^$all
 ||reddit.com/r/sadiesink_18^$all
@@ -11159,7 +11157,6 @@
 ||reddit.com/r/lansingsex^$all
 ||reddit.com/r/barafurries^$all
 ||reddit.com/r/sph_true^$all
-||reddit.com/r/vrchatlewds^$all
 ||reddit.com/r/elpasoblows^$all
 ||reddit.com/r/touspublicsnudes^$all
 ||reddit.com/r/slutty_creators^$all
@@ -13825,7 +13822,6 @@
 ||reddit.com/r/chokedoutsluts^$all
 ||reddit.com/r/missoulahookups^$all
 ||reddit.com/r/bdac^$all
-||reddit.com/r/gaggedladies^$all
 ||reddit.com/r/stockingsxxx^$all
 ||reddit.com/r/everdistant_utopia^$all
 ||reddit.com/r/pomklementieff^$all
@@ -14533,7 +14529,6 @@
 ||reddit.com/r/h0rnypr0grammer^$all
 ||reddit.com/r/sexy_girls_leggings^$all
 ||reddit.com/r/cumpumping^$all
-||reddit.com/r/blackanklesocks^$all
 ||reddit.com/r/cherrykissfan^$all
 ||reddit.com/r/darksidesmokingfetish^$all
 ||reddit.com/r/elizabetholsenslegs^$all
@@ -20004,6 +19999,11 @@
 ||reddit.com/r/realmainekinksters^$all
 ||reddit.com/r/vantagenudebeach^$all
 ||reddit.com/r/dickinson_northdakota^$all
+||reddit.com/r/marmitebadgergonewild^$all
+||reddit.com/r/pawgnextdoor^$all
+||reddit.com/r/sapphireswallows^$all
+||reddit.com/r/anita_blanche_xxx^$all
+||reddit.com/r/mdmamollygonewild_^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
