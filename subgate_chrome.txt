@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-11-05T21:34:15Z
+! Version: 2026-11-06T10:51:31Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
