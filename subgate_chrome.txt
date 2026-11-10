@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-11-09T23:52:04Z
+! Version: 2026-11-10T11:08:09Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -8257,7 +8257,6 @@
 ||reddit.com/r/analognudes^$all
 ||reddit.com/r/femboyfantasys^$all
 ||reddit.com/r/penthousemodels^$all
-||reddit.com/r/legalteengirl^$all
 ||reddit.com/r/cuckowners^$all
 ||reddit.com/r/pulsingcock^$all
 ||reddit.com/r/wnygonewild^$all
@@ -13476,7 +13475,6 @@
 ||reddit.com/r/idahofallsexhibition^$all
 ||reddit.com/r/bullfrogging^$all
 ||reddit.com/r/exposedbeta^$all
-||reddit.com/r/prostatequeen^$all
 ||reddit.com/r/playalinda^$all
 ||reddit.com/r/serenar34^$all
 ||reddit.com/r/xsgirls^$all
@@ -14089,7 +14087,6 @@
 ||reddit.com/r/outfits_moment^$all
 ||reddit.com/r/cantonfwb^$all
 ||reddit.com/r/titsthatjiggles^$all
-||reddit.com/r/pureblonde^$all
 ||reddit.com/r/cd_heels_x^$all
 ||reddit.com/r/chubbyfetishhaven^$all
 ||reddit.com/r/orally_bi^$all
@@ -16656,7 +16653,6 @@
 ||reddit.com/r/mexicanchacales^$all
 ||reddit.com/r/albyrydes^$all
 ||reddit.com/r/mikatanxxx^$all
-||reddit.com/r/dontyoulovethroats^$all
 ||reddit.com/r/nsfwcouplesonlyplease^$all
 ||reddit.com/r/fakepenthousecovers^$all
 ||reddit.com/r/maryjeanxxx^$all
@@ -20004,6 +20000,10 @@
 ||reddit.com/r/daytondating^$all
 ||reddit.com/r/goddesschloelove^$all
 ||reddit.com/r/imnotfake^$all
+||reddit.com/r/sarasahara^$all
+||reddit.com/r/sushijenni^$all
+||reddit.com/r/u_hearmeman98^$all
+||reddit.com/r/ai_asian_porn^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
