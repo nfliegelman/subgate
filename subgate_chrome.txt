@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-11-15T01:06:33Z
+! Version: 2026-11-15T10:49:29Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -4006,7 +4006,6 @@
 ||reddit.com/r/shaftshining^$all
 ||reddit.com/r/boyswithabs^$all
 ||reddit.com/r/trapsarentgay2^$all
-||reddit.com/r/boobsworld^$all
 ||reddit.com/r/thicklocalmilfs^$all
 ||reddit.com/r/fingeredfrombehind^$all
 ||reddit.com/r/backseatporn^$all
@@ -9860,7 +9859,6 @@
 ||reddit.com/r/hookupmissouri^$all
 ||reddit.com/r/marymouser_^$all
 ||reddit.com/r/french_wife^$all
-||reddit.com/r/outofbedsex^$all
 ||reddit.com/r/cummininher^$all
 ||reddit.com/r/britneyofficial1^$all
 ||reddit.com/r/wifecumlovers^$all
@@ -10355,7 +10353,6 @@
 ||reddit.com/r/classicyuri^$all
 ||reddit.com/r/fierceflownsfw^$all
 ||reddit.com/r/remylacroixvideos^$all
-||reddit.com/r/sissiesnew^$all
 ||reddit.com/r/shiftymine_^$all
 ||reddit.com/r/moanlikeagirl^$all
 ||reddit.com/r/smalltitsfucked^$all
@@ -16731,7 +16728,6 @@
 ||reddit.com/r/boatsntoes^$all
 ||reddit.com/r/lewdcina^$all
 ||reddit.com/r/metrodetroitswingers^$all
-||reddit.com/r/sexieststockings^$all
 ||reddit.com/r/girls_tiedup_in_socks^$all
 ||reddit.com/r/milfplayground^$all
 ||reddit.com/r/loosecircumcision^$all
@@ -20004,6 +20000,10 @@
 ||reddit.com/r/violetjade^$all
 ||reddit.com/r/leahvonnoire^$all
 ||reddit.com/r/blue_eyed_girls^$all
+||reddit.com/r/milehighselfies^$all
+||reddit.com/r/deviousdesires^$all
+||reddit.com/r/njslutwife^$all
+||reddit.com/r/solo_bdsm^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
