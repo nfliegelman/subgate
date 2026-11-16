@@ -1,7 +1,7 @@
 ! Title: subgate (chrome)
 ! Description: Subreddits Reddit itself flags 18+, path blocked. Built by subgate v0.4.0.
 ! Homepage: https://github.com/nfliegelman/subgate
-! Version: 2026-11-15T20:27:31Z
+! Version: 2026-11-16T01:04:15Z
 ! Expires: 1 day
 ! Entry count: 20000
 ||reddit.com/r/gonewild^$all
@@ -3739,7 +3739,6 @@
 ||reddit.com/r/bigguybutts^$all
 ||reddit.com/r/desperatewhoress^$all
 ||reddit.com/r/joip^$all
-||reddit.com/r/femaledominationbdsm^$all
 ||reddit.com/r/whiptrax^$all
 ||reddit.com/r/kissandride^$all
 ||reddit.com/r/classass^$all
@@ -8229,7 +8228,6 @@
 ||reddit.com/r/anaheimhookup^$all
 ||reddit.com/r/asiancelebsfap^$all
 ||reddit.com/r/analperfection^$all
-||reddit.com/r/gwbooks^$all
 ||reddit.com/r/ntrman1^$all
 ||reddit.com/r/ebonyselfies^$all
 ||reddit.com/r/ridinggood^$all
@@ -12603,7 +12601,6 @@
 ||reddit.com/r/girlslovesuckingcock^$all
 ||reddit.com/r/guyspeegonewild2^$all
 ||reddit.com/r/abgtarchive^$all
-||reddit.com/r/men_ro^$all
 ||reddit.com/r/michiganfwbandhookups^$all
 ||reddit.com/r/dndgonewild^$all
 ||reddit.com/r/spitcum^$all
@@ -18288,7 +18285,6 @@
 ||reddit.com/r/stripchatcams^$all
 ||reddit.com/r/girlsinskirts2^$all
 ||reddit.com/r/stinkyyysocks^$all
-||reddit.com/r/bwcinterracial^$all
 ||reddit.com/r/enhancednudescene^$all
 ||reddit.com/r/idahokinkgw^$all
 ||reddit.com/r/malefetishitems^$all
@@ -19918,7 +19914,6 @@
 ||reddit.com/r/onlyfans101community^$all
 ||reddit.com/r/rate_my_boobies^$all
 ||reddit.com/r/petitebooties^$all
-||reddit.com/r/sexymodelsandpromos^$all
 ||reddit.com/r/uhqstars^$all
 ||reddit.com/r/graloveable^$all
 ||reddit.com/r/youngperps^$all
@@ -20004,6 +19999,11 @@
 ||reddit.com/r/mmf_bisex_nj^$all
 ||reddit.com/r/nettlehfo^$all
 ||reddit.com/r/violetjade^$all
+||reddit.com/r/leahvonnoire^$all
+||reddit.com/r/blue_eyed_girls^$all
+||reddit.com/r/milehighselfies^$all
+||reddit.com/r/deviousdesires^$all
+||reddit.com/r/njslutwife^$all
 ! Feed hygiene (hides NSFW teasers in feeds and search):
 reddit.com##shreddit-post[nsfw]
 reddit.com##shreddit-blurred-container
